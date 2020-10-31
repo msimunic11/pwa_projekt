@@ -1,6 +1,7 @@
 <template>
 
   <div id="app">
+      
     <b-navbar>
       <template slot="start">
         <img class="resize" src="./assets/logo.png" />
@@ -25,37 +26,40 @@
         </b-navbar-item>
       </template>
     </b-navbar>
-<div class="container">
-      <div class="left">
-  <hr>
-        <h1>Welcome to <b><i>What's in my fridge?</i></b></h1>
-        <p>The best way to reduce food waste and save money? Check what you already have in your fridge. Don't buy the same thing twice. See what you have anytime & anywhere on your mobilephone in the tram or in the comfort of your home. </p>
-      <hr>
-      <p>Open the fridge. Type and add all the food you posses and don't waste time and money for the recipe you already have the food for.
-         </p>
-      </div>
 
- <div class="right">
-  <img src="./assets/food.png" alt="food" class="food">
-      </div>
-    <div class="fridge-top">
-      <div class="catch"></div>
-    </div>
-    
-    <div class="fridge-bottom">
-      <div class="catch2"></div>
-    </div>
-    <div class="input1">
-    <input class="input" placeholder="Type your groceries here:" v-model="newToDo" />
-    <b-button type="is-primary" class="add-button" v-on:click="add()"
-      >ADD</b-button
-    >
-  </div>
+   
+<div class="input1">
+  <section>
+        <b-field label="Name">
+            <b-input placeholder="Name&Surname"></b-input>
+        </b-field>
 
- 
-</div>
+        <b-field label="Email"
+            type="is-danger"
+            message="This email is invalid">
+            <b-input type="email"
+                placeholder="Email"
+                maxlength="30">
+            </b-input>
+        </b-field>
+
+        <b-field label="Username"
+            type="is-success"
+            message="This username is available">
+            <b-input placeholder="Username" maxlength="30"></b-input>
+        </b-field>
+
+        <b-field label="Password"
+            type="is-warning"
+            :message="['Password is too short', 'Password must have at least 8 characters']">
+            <b-input placeholder="Password" type="password" maxlength="30"></b-input>
+        </b-field>
+
+       
+    </section>
+
   </div>
-  
+  </div>
 </template>
 
 <script>
@@ -78,26 +82,6 @@ input.input {
   margin: auto;
   
 }
-.left{
-  float:left;
-  width:35%;
-  font-size:22px;
-  color: rgb(124, 63, 209);
-  }
-
-  .right{
-  float:right;
-  width:37%;
-
-  }
-
-
-  
-  .left h1{
-    font-size:30px;
-    font-family: Indie flower;
-  }
-
 .fridge-top {
   width: 250px;
   margin: auto;
@@ -114,7 +98,7 @@ input.input {
   border: 3px solid white;
   text-align: center;
   height: 150px;
-  border-radius: 5%;
+  border-radius: 2%;
   background-color: rgb(124, 63, 209);
 }
 button.add-button {
@@ -155,33 +139,11 @@ img.resize {
   margin: auto;
   border: 3px solid white;
   text-align: center;
-  border-radius: 5%;
+  border-radius: 2%;
   
 }
 button.button.add-button.is-primary {
     width: 100%;
+    
 }
-.navbar-item.has-dropdown {
-    color: rgb(124, 63, 209);
-    font-weight: bold;
-}
-
-a.navbar-item {
-    color: rgb(124, 63, 209);
-    font-weight: bold;
-}
-.navbar-menu {
-    background-color: rgba(121, 87, 213, 0.25);
-}
-
-@media only screen and (max-width:800px) {
-  /* For mobile phones: */
-  .left, .right {
-    width:100%;
-    float:none;
-        padding: 20px;
-        text-align: center;
-  }
-}
-
 </style>
