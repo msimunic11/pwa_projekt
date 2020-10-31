@@ -54,6 +54,7 @@
 
  
 </div>
+<footer><div class="footer"><p> Powered by: Marija | TVZ | PWA | What's in my fridge? </p></div></footer>
   </div>
   
 </template>
@@ -173,6 +174,11 @@ a.navbar-item {
 .navbar-menu {
     background-color: rgba(121, 87, 213, 0.25);
 }
+.footer{text-align: center;
+color:rgb(124, 63, 209);
+font-weight: bold;
+text-transform: uppercase;}
+
 
 @media only screen and (max-width:800px) {
   /* For mobile phones: */
