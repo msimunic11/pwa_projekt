@@ -66,7 +66,7 @@
     </div>
     <footer>
       <div class="footer">
-        <p>Powered by: Marija | TVZ | PWA | What's in my fridge?</p>
+        <p>Powered by: Marija | TVZ | PWA | What's in my fridge?™ </p>
       </div>
     </footer>
   </div>
@@ -115,7 +115,7 @@ input.input {
   border-radius: 2%;
   text-align: center;
   height: 400px;
-  background-color: rgb(124, 63, 209);
+background: linear-gradient(90deg, rgba(124,63,209,1) 0%, rgba(202,176,238,0.83) 100%);
 }
 
 .fridge-bottom {
@@ -125,7 +125,7 @@ input.input {
   text-align: center;
   height: 150px;
   border-radius: 5%;
-  background-color: rgb(124, 63, 209);
+background: linear-gradient(90deg, rgba(124,63,209,1) 0%, rgba(202,176,238,0.83) 100%);
 }
 button.add-button {
   height: 40px;
