@@ -116,6 +116,7 @@ input.input {
   text-align: center;
   height: 400px;
 background: linear-gradient(90deg, rgba(124,63,209,1) 0%, rgba(202,176,238,0.83) 100%);
+    border: 2px solid rgba(124,63,209,1);
 }
 
 .fridge-bottom {
@@ -126,6 +127,7 @@ background: linear-gradient(90deg, rgba(124,63,209,1) 0%, rgba(202,176,238,0.83)
   height: 150px;
   border-radius: 5%;
 background: linear-gradient(90deg, rgba(124,63,209,1) 0%, rgba(202,176,238,0.83) 100%);
+    border: 2px solid rgba(124,63,209,1);
 }
 button.add-button {
   height: 40px;
