@@ -1,85 +1,45 @@
+
 <template>
   <div id="app">
-    <b-navbar>
-      <template slot="start">
-        <img class="resize" src="./assets/logo.png" />
+  
+    <Header></Header>
+     <router-view/>
+    <Tasks></Tasks>
+    <Footer></Footer>
 
-        <b-navbar-item href="#"> HOME </b-navbar-item>
-        <b-navbar-item href="#"> DOCUMENTATION </b-navbar-item>
-        <b-navbar-dropdown label="INFO">
-          <b-navbar-item href="#"> About </b-navbar-item>
-          <b-navbar-item href="#"> Contact </b-navbar-item>
-        </b-navbar-dropdown>
-      </template>
 
-      <template slot="end">
-        <b-navbar-item tag="div">
-          <div class="buttons">
-            <a class="button is-primary">
-              <strong>SIGN UP</strong>
-            </a>
 
-            <b-button type="is-primary" outlined>LOG IN</b-button>
-          </div>
-        </b-navbar-item>
-      </template>
-    </b-navbar>
-    <div class="container">
-      <div class="left">
-        <hr />
-        <h1>
-          Welcome to <b><i>What's in my fridge?</i></b>
-        </h1>
-        <p>
-          The best way to reduce food waste and save money? Check what you
-          already have in your fridge. Don't buy the same thing twice. See what
-          you have anytime & anywhere on your mobilephone in the tram or in the
-          comfort of your home.
-        </p>
-        <hr />
-        <p>
-          Open the fridge. Type and add all the food you posses and don't waste
-          time and money for the recipe you already have the food for.
-        </p>
-      </div>
-
-      <div class="right">
-        <img src="./assets/food.png" alt="food" class="food" />
-      </div>
-      <div class="fridge-top">
-        <div class="catch"></div>
-      </div>
-
-      <div class="fridge-bottom">
-        <div class="catch2"></div>
-      </div>
-      <div class="input1">
-        <input
-          class="input"
-          placeholder="Type your groceries here:"
-          v-model="newToDo"
-        />
-        <b-button type="is-primary" class="add-button" v-on:click="add()"
-          >ADD</b-button
-        >
-      </div>
-    </div>
-    <footer>
-      <div class="footer">
-        <p>Powered by: Marija | TVZ | PWA | What's in my fridge?™ </p>
-      </div>
-    </footer>
+    
   </div>
 </template>
 
-<script>
-export default {
-  name: "app",
 
-  data() {
-    return {};
+<script>
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
+
+
+
+
+
+
+export default {
+  name: "App",
+  components: {
+    
+    'Header':Header,
+'Footer':Footer,
+
   },
+  data() {
+    return {
+      show: true
+    };
+  }
 };
+
+
+
 </script>
 
 <style>
@@ -115,8 +75,12 @@ input.input {
   border-radius: 2%;
   text-align: center;
   height: 400px;
-background: linear-gradient(90deg, rgba(124,63,209,1) 0%, rgba(202,176,238,0.83) 100%);
-    border: 2px solid rgba(124,63,209,1);
+  background: linear-gradient(
+    90deg,
+    rgba(124, 63, 209, 1) 0%,
+    rgba(202, 176, 238, 0.83) 100%
+  );
+  border: 2px solid rgba(124, 63, 209, 1);
 }
 
 .fridge-bottom {
@@ -126,8 +90,13 @@ background: linear-gradient(90deg, rgba(124,63,209,1) 0%, rgba(202,176,238,0.83)
   text-align: center;
   height: 150px;
   border-radius: 5%;
-background: linear-gradient(90deg, rgba(124,63,209,1) 0%, rgba(202,176,238,0.83) 100%);
-    border: 2px solid rgba(124,63,209,1);
+  background: linear-gradient(
+    90deg,
+    rgba(124, 63, 209, 1) 0%,
+    rgba(202, 176, 238, 0.83) 100%
+  );
+  border: 2px solid rgba(124, 63, 209, 1);
+  
 }
 button.add-button {
   height: 40px;
@@ -190,6 +159,9 @@ a.navbar-item {
   text-transform: uppercase;
 }
 
+
+
+
 @media only screen and (max-width: 800px) {
   /* For mobile phones: */
   .left,
@@ -201,3 +173,4 @@ a.navbar-item {
   }
 }
 </style>
+
