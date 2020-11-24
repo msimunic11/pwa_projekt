@@ -91,9 +91,7 @@ export default {
 
 <style>
 
-  *{
-    font-size:15px;
-  }
+  
 
 
   input{display:none}
