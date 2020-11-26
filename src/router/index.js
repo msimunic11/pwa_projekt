@@ -1,13 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Pocetna from '../components/Pocetna.vue'
-import Namirnica from '../components/Namirnica.vue'
+
+import vjezba from '../components/vjezba.vue'
 import Namirnice from '../components/Namirnice.vue'
 
 
 Vue.use(VueRouter)
 
-  const routes = [
+const routes = [
   {
     path: '/',
     name: 'pocetna',
@@ -19,11 +20,11 @@ Vue.use(VueRouter)
     component: Namirnice
   },
   {
-    path: '/namirnica',
-    name: 'Namirnica',
-    component: Namirnica
+    path: '/vjezba',
+    name: 'vjezba',
+    component: vjezba
   },
-  
+
 ]
 
 const router = new VueRouter({

@@ -1,52 +1,87 @@
 <template>
-     
+  <div>
+    <div class="background">
+      <div class="ani">
+        <div class="ani3"></div>
+        <div class="index container">
+          <ul style="list-style-type: bullet">
+            <li :data="data" v-for="(todo, i) in existingToDo" v-bind:key="i">
+              <span class="chip">
+                {{ todo.text }}
+                <b-button
+                  type="is-primary"
+                  class="delete-button"
+                  @click="deleteToDo(i)"
+                  >X</b-button
+                >
+              </span>
+            </li>
+          </ul>
+          <form>
+            <input
+              type="text"
+              class="input"
+              placeholder="Add into the fridge:"
+              v-model="newToDo"
+            />
+            <b-button type="is-primary" class="add-button" v-on:click="add()"
+              >ADD</b-button
+            >
+          </form>
+        </div>
+      </div>
 
-       <div>
-<div class="background">
-<div class="ani">
-
-<div class="ani3"></div>
-<ul style="list-style-type: bullet">
-          <li :data="data" v-for="(todo, i) in existingToDo" v-bind:key="i">
-            <span>{{ i + 1 }} {{ todo.text }}</span>
-            <b-button type="is-primary" class="delete-button" @click="deleteToDo(i)">x</b-button>
-          </li>
-        </ul>
-</div>
-
-<div class="ani2"><ul style="list-style-type: bullet">
-          <li v-for="(todo, i) in existingToDo2" v-bind:key="i">
-            <span>{{ i + 1 }} {{ todo.text }}</span>
-            <b-button type="is-primary" class="delete-button" @click="deleteToDo2(i)">X</b-button>
-          </li>
-        </ul>
-</div>
-
-
-     <div class="input1">
-    <form>
-        <input type="text" class="input" placeholder="Add into the fridge:" v-model="newToDo"/>
-        <b-button type="is-primary" class="add-button" v-on:click="add()">ADD</b-button>
-
-        <input type="text" class="input" placeholder="Add into the freezer:" v-model="newToDo2"/>
-        <b-button type="is-primary" class="add-button2" v-on:click="add2()">ADD</b-button>
-       
-        
-        
-      </form>
-       </div>
-
-
-     
+      <div class="ani2">
+        <div class="index container">
+          <ul style="list-style-type: bullet">
+            <li v-for="(todo, i) in existingToDo2" v-bind:key="i">
+              <span class="chip">
+                {{ todo.text }}
+                <b-button
+                  type="is-primary"
+                  class="delete-button"
+                  @click="deleteToDo2(i)"
+                >
+                  X
+                </b-button></span
+              >
+            </li>
+          </ul>
+          <form>
+            <input
+              type="text"
+              class="input"
+              placeholder="Add into the freezer:"
+              v-model="newToDo2"
+            />
+            <b-button type="is-primary" class="add-button2" v-on:click="add2()"
+              >ADD</b-button
+            >
+          </form>
+        </div>
+      </div>
     </div>
-    </div>
- </template>
+  </div>
+</template>
 <script>
+import getCourseType from '../services/RecipeService';
+import axios from 'axios';
 export default {
   name: "app",
-  
+  created(){
+    getCourseType.getCourseType()
+            .then(
+              axios.spread((...res)=>{
+                this.recipes = res;
+                console.log('RESPONSE', res);
+              })
+            )
+            
+  },
+
   data() {
     return {
+      recipes:[], 
       newToDo: "",
       existingToDo: [
         { text: "Milk", id: 0 },
@@ -66,18 +101,14 @@ export default {
         text: this.newToDo,
         id: new Date().valueOf(),
       }),
-      
         (this.newToDo = "");
-        
     },
     add2() {
       this.existingToDo2.push({
         text: this.newToDo2,
         id: new Date().valueOf(),
       }),
-      
         (this.newToDo2 = "");
-        
     },
     deleteToDo(i) {
       this.existingToDo.splice(i, 1);
@@ -90,49 +121,87 @@ export default {
 </script>
 
 <style>
-
-  
-
-
-  input{display:none}
-.ani
-    {
-     width: 250px;
-    height: 400px;
-    
-    display: block;
-    
-    margin: auto;
-    
-    text-align: center;
-    
-    border-radius: 2%;
-    background: white;
-    border: 2px solid rgba(124, 63, 209, 1);
-    }
-
-
-.ani2
-    {
-     width: 250px;
-    height: 150px;
-    
-    
-    display: block;
-    
-    margin: auto;
-    
-    text-align: center;
-    
-    border-radius: 5%;
-    background: white;
-    border: 2px solid rgba(124, 63, 209, 1);
-    }
-.add-button2{
-  width:100%;
+.chip {
+  font-size: 12px;
+  border-radius: 50px;
+  background: rgba(121, 87, 213, 0.25);
+  padding: 5px;
+  float: left;
+  color: #552fbc;
 }
-.background{
-  background:rgb(228 218 255 / 25%);;
+
+input {
+  display: none;
 }
-.input1{border: 1px solid rgba(121, 87, 213, 0.25);}
+.ani {
+  width: 250px;
+  height: 400px;
+  padding: 5px;
+  display: block;
+
+  margin: auto;
+
+  text-align: center;
+
+  border-radius: 2%;
+  background: white;
+  border: 2px solid rgba(124, 63, 209, 1);
+}
+
+.ani2 {
+  width: 250px;
+  height: 150px;
+  padding: 5px;
+
+  display: block;
+
+  margin: auto;
+
+  text-align: center;
+
+  border-radius: 5%;
+  background: white;
+  border: 2px solid rgba(124, 63, 209, 1);
+}
+.add-button2 {
+  width: 100%;
+}
+.background {
+  background: rgb(228 218 255 / 25%);
+}
+ul .button.is-primary {
+  background-color: rgba(121, 87, 213, 0.25);
+
+  color: #fff;
+  float: right;
+  border-radius: 28px;
+  font-size: 10px;
+}
+
+input.input {
+  border: white;
+  border-bottom: 1px solid rgba(121, 87, 213, 0.8);
+  width: 125px;
+  text-align: center;
+  border-radius: 20px;
+  margin: auto;
+  float: left;
+  height: 37px;
+  font-size: 12px;
+}
+button.button.add-button2.is-primary {
+  font-size: 12px;
+  float: left;
+  width: 47px;
+  height: 37px;
+  border-radius: 20px;
+}
+button.button.add-button.is-primary {
+  font-size: 12px;
+  float: left;
+  width: 47px;
+  height: 37px;
+  border-radius: 20px;
+}
 </style>
+

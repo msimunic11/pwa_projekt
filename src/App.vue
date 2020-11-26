@@ -1,45 +1,37 @@
 
 <template>
   <div id="app">
-  
     <Header></Header>
-     <router-view/>
-    <Tasks></Tasks>
-    <Footer></Footer>
-
-
-
+    <router-view />
     
+    <vjezba></vjezba>
+    <Footer></Footer>
+    <axios></axios>
+   
   </div>
 </template>
 
 
 <script>
-import Header from './components/Header.vue';
-import Footer from './components/Footer.vue';
-
-
-
-
-
+import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
+import vjezba from "./components/vjezba.vue";
 
 export default {
   name: "App",
+ 
   components: {
+    Header: Header,
+    Footer: Footer,
+     vjezba: vjezba,
     
-    'Header':Header,
-'Footer':Footer,
-
   },
   data() {
     return {
-      show: true
+      show: true,
     };
-  }
+  },
 };
-
-
-
 </script>
 
 <style>
@@ -96,7 +88,6 @@ input.input {
     rgba(202, 176, 238, 0.83) 100%
   );
   border: 2px solid rgba(124, 63, 209, 1);
-  
 }
 button.add-button {
   height: 40px;
@@ -112,20 +103,20 @@ button.add-button {
 
 .catch {
   background-color: white;
-
-  width: 40px;
+  width: 50px;
   height: 10px;
   margin-top: 350px;
   margin-left: 15px;
+  border-radius: 5px;
 }
 
 .catch2 {
   background-color: white;
-
-  width: 40px;
+  width: 50px;
   height: 10px;
   margin-top: 40px;
   margin-left: 15px;
+  border-radius: 5px;
 }
 img.resize {
   width: 250px;
@@ -158,9 +149,6 @@ a.navbar-item {
   font-weight: bold;
   text-transform: uppercase;
 }
-
-
-
 
 @media only screen and (max-width: 800px) {
   /* For mobile phones: */

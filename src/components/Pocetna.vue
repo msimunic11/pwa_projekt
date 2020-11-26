@@ -30,15 +30,8 @@
       <div class="fridge-bottom">
         <div class="catch2"></div>
       </div>
-
-      
-     
-      
- 
+             
     </div>
-
-
-
     </template>
 
 
