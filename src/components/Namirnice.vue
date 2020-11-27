@@ -111,7 +111,7 @@ export default {
   },
   mounted() {
     fetch(
-      "https://api.spoonacular.com/recipes/findByIngredients?ingredients=(data) existingToDo: {text: string}&number=4&apiKey=e2cc2a228caa4ab59852f65e193ff042"
+      "https://api.spoonacular.com/recipes/findByIngredients?ingredients=(existingToDo) text: string&number=4&apiKey=e2cc2a228caa4ab59852f65e193ff042"
     )
       .then((response) => response.json())
       .then((data) => {
