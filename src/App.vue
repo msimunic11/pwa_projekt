@@ -159,6 +159,7 @@ a.navbar-item {
     padding: 20px;
     text-align: center;
   }
+ 
 }
 </style>
 

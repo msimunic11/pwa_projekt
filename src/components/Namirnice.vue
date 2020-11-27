@@ -1,6 +1,9 @@
 <template>
   <div>
     <div class="background">
+      
+          
+
       <div class="ani">
         <div class="ani3"></div>
         <div class="index container">
@@ -60,39 +63,80 @@
           </form>
         </div>
       </div>
+      <div class="tasks">
+        <b-table :data="data">
+         <!-- Comment <b-table-column field="title" label="Recipe" v-slot="props">
+            {{ props.row.title }}
+          </b-table-column>
+          <b-table-column
+            field="ingredients"
+            label="Missed Ingredients"
+            v-slot="props"
+          >
+            {{ props.row.missedIngredientCount }}
+          </b-table-column>-->
+
+          <b-table-column label="RECIPES TO MAKE!" v-slot="props">{{ props.row.title }}</b-table-column>
+          <b-table-column label="MISSED INGREDIENTS..." v-slot="props">{{ props.row.missedIngredientCount }}</b-table-column>
+        </b-table>
+<!--
+        <section>
+        
+          <b-image
+            v-bind:key="id"
+            src="https://spoonacular.com/recipeImages/${id}-90x90.jpg"
+            src-fallback="https://picsum.photos/id/237/600/400"
+            ratio="3by2"
+            @load="onLoad"
+            @error="onError"
+        ></b-image>
+        <pre style="max-height: 400px"><b>Events:</b>{{ events }}</pre>
+    </section> -->
+      </div>
     </div>
   </div>
 </template>
 <script>
-import getCourseType from '../services/RecipeService';
-import axios from 'axios';
+import getCourseType from "../services/RecipeService";
+import axios from "axios";
 export default {
   name: "app",
-  created(){
-    getCourseType.getCourseType()
-            .then(
-              axios.spread((...res)=>{
-                this.recipes = res;
-                console.log('RESPONSE', res);
-              })
-            )
-            
+  created() {
+    getCourseType.getCourseType().then(
+      axios.spread((...res) => {
+        this.recipes = res;
+        console.log("RESPONSE", res);
+      })
+    );
+  },
+  mounted() {
+    fetch(
+      "https://api.spoonacular.com/recipes/findByIngredients?ingredients=(data) existingToDo: {text: string}&number=4&apiKey=e2cc2a228caa4ab59852f65e193ff042"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        this.data = data;
+      });
   },
 
   data() {
     return {
-      recipes:[], 
+      recipes: [],
       newToDo: "",
       existingToDo: [
         { text: "Milk", id: 0 },
-        { text: "WhiteBread", id: 1 },
+        { text: "Apples", id: 1 },
         { text: "Eggs", id: 2 },
       ],
       existingToDo2: [
         { text: "Fish", id: 0 },
         { text: "Beans", id: 1 },
-        { text: "Watter", id: 2 },
+        { text: "Water", id: 2 },
       ],
+      title: true,
+      missedIngredientCount: true,
+      id: true,
+      events: [],
     };
   },
   methods: {
@@ -115,6 +159,12 @@ export default {
     },
     deleteToDo2(i) {
       this.existingToDo2.splice(i, 1);
+    },
+    onLoad(event, src) {
+      this.events.push(`${src} loaded`);
+    },
+    onError(event, src) {
+      this.events.push(`${src} fails to load`);
     },
   },
 };
@@ -163,6 +213,22 @@ input {
   background: white;
   border: 2px solid rgba(124, 63, 209, 1);
 }
+.ani5 {
+  width: 400px;
+  height: 400px;
+  padding: 5px;
+
+  display: block;
+
+  margin: auto;
+
+  text-align: center;
+
+  border-radius: 1%;
+  background: white;
+  border: 2px solid rgba(124, 63, 209, 1);
+  float:right;
+}
 .add-button2 {
   width: 100%;
 }
@@ -203,5 +269,20 @@ button.button.add-button.is-primary {
   height: 37px;
   border-radius: 20px;
 }
+
+.b-table .table {
+    
+    background-color: transparent;
+    text-align: center;
+    width:200px;
+
+}
+tr {
+   
+    color: #7957d5;
+    font-weight: 350;
+}
+
+
 </style>
 
