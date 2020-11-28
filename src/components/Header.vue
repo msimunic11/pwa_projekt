@@ -2,27 +2,25 @@
   <b-navbar>
     <template slot="start">
       <img class="resize" src="../assets/logo.png" />
-
-      <b-navbar-item href="#">
+      <b-navbar-item>
         <router-link to="/">HOME</router-link>
       </b-navbar-item>
-      <b-navbar-item href="#">
+      <b-navbar-item>
         <router-link to="/namirnice">MY FRIDGE</router-link>
       </b-navbar-item>
-
       <b-navbar-dropdown label="INFO">
-        <b-navbar-item href="#"> <router-link to="/vjezba">About</router-link> </b-navbar-item>
-        <b-navbar-item href="#"> Contact </b-navbar-item>
+        <b-navbar-item>
+          <router-link to="/vjezba">About</router-link>
+        </b-navbar-item>
+        <b-navbar-item> Contact </b-navbar-item>
       </b-navbar-dropdown>
     </template>
-
     <template slot="end">
       <b-navbar-item tag="div">
         <div class="buttons">
           <a class="button is-primary">
             <strong>SIGN UP</strong>
           </a>
-
           <b-button type="is-primary" outlined>LOG IN</b-button>
         </div>
       </b-navbar-item>

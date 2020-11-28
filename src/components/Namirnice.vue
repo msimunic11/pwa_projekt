@@ -1,288 +1,277 @@
 <template>
   <div>
-    <div class="background">
-      
-          
-
-      <div class="ani">
-        <div class="ani3"></div>
-        <div class="index container">
-          <ul style="list-style-type: bullet">
-            <li :data="data" v-for="(todo, i) in existingToDo" v-bind:key="i">
-              <span class="chip">
-                {{ todo.text }}
-                <b-button
-                  type="is-primary"
-                  class="delete-button"
-                  @click="deleteToDo(i)"
-                  >X</b-button
+    <div class="background py-6">
+      <div class="columns is-multiline is-centered">
+        <div class="column is-full">
+          <div>
+            <div class="fridge-top" v-if="fridgeOpen">
+              <div @click="fridgeOpen = !fridgeOpen" class="fridge-door" />
+              <div class="columns is-multiline pl-3">
+                <div class="column is-full">Fridge</div>
+                <div
+                  class="column is-full py-1"
+                  v-for="(ingredient, i) in fridgeIngredients"
+                  :key="i"
                 >
-              </span>
-            </li>
-          </ul>
-          <form>
-            <input
-              type="text"
-              class="input"
-              placeholder="Add into the fridge:"
-              v-model="newToDo"
-            />
-            <b-button type="is-primary" class="add-button" v-on:click="add()"
-              >ADD</b-button
-            >
-          </form>
+                  <b-tag
+                    size="is-medium"
+                    type="is-primary"
+                    style="width: 100%"
+                    closable
+                    aria-close-label="Close tag"
+                    @close="deleteFridgeIngredient(i)"
+                  >
+                    {{ ingredient }}
+                  </b-tag>
+                </div>
+                <div class="column is-full">
+                  <b-field>
+                    <b-input
+                      placeholder="Ingredient name"
+                      v-model="fridgeIngredient"
+                      icon="magnify"
+                      icon-right="plus-circle"
+                      icon-right-clickable
+                      @icon-right-click="addFridgeIngredient"
+                    >
+                    </b-input>
+                  </b-field>
+                </div>
+              </div>
+            </div>
+            <div class="fridge-top closed-fridge" v-else>
+              <div @click="fridgeOpen = !fridgeOpen" class="fridge-handle" />
+            </div>
+            <div class="fridge-bottom mt-3">
+              <div class="columns is-multiline">
+                <div class="column is-full">Freezer</div>
+                <div
+                  class="column is-full py-1"
+                  v-for="(ingredient, i) in freezerIngredients"
+                  :key="i"
+                >
+                  <b-tag
+                    size="is-medium"
+                    type="is-primary"
+                    style="width: 100%"
+                    closable
+                    aria-close-label="Close tag"
+                    @close="deleteFreezerIngredient(i)"
+                  >
+                    {{ ingredient }}
+                  </b-tag>
+                </div>
+                <div class="column is-full">
+                  <b-field>
+                    <b-input
+                      placeholder="Ingredient name"
+                      v-model="freezerIngredient"
+                      icon="magnify"
+                      icon-right="plus-circle"
+                      icon-right-clickable
+                      @icon-right-click="addFreezerIngredient"
+                    >
+                    </b-input>
+                  </b-field>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div class="ani2">
-        <div class="index container">
-          <ul style="list-style-type: bullet">
-            <li v-for="(todo, i) in existingToDo2" v-bind:key="i">
-              <span class="chip">
-                {{ todo.text }}
-                <b-button
-                  type="is-primary"
-                  class="delete-button"
-                  @click="deleteToDo2(i)"
-                >
-                  X
-                </b-button></span
+        <div class="column is-full">
+          <div class="columns is-multiline has-text-centered">
+            <div class="column is-full">
+              <span class="recipe-text">List of found recipes:</span>
+            </div>
+            <div class="column is-full" ref="recipes">
+              <span v-if="recipes && recipes.length == 0"
+                >Not a single recipe was found!</span
               >
-            </li>
-          </ul>
-          <form>
-            <input
-              type="text"
-              class="input"
-              placeholder="Add into the freezer:"
-              v-model="newToDo2"
-            />
-            <b-button type="is-primary" class="add-button2" v-on:click="add2()"
-              >ADD</b-button
-            >
-          </form>
+              <div class="columns px-6 is-multiline" v-else>
+                <div
+                  class="column is-one-third-desktop is-full-tablet"
+                  v-for="(recipe, i) in recipes"
+                  :key="i"
+                >
+                  <b-message
+                    :class="{
+                      'is-success': recipe.missedIngredientCount == 0,
+                      'is-danger': recipe.missedIngredientCount != 0,
+                    }"
+                  >
+                    <div class="recipe-box">
+                      <div class="recipe-image">
+                        <b-image :src="recipe.image" />
+                      </div>
+                      <div class="recipe-description">
+                        <span class="recipe-title has-text-weight-bold">{{
+                          recipe.title
+                        }}</span>
+                        <span v-if="recipe.missedIngredientCount != 0"
+                          >Missing
+                          {{ recipe.missedIngredientCount }}
+                          ingredients!</span
+                        >
+                        <span class="recipe-available-ingredients pt-2">
+                          <b-tag
+                            class="is-success"
+                            v-if="recipe.missedIngredientCount == 0"
+                            >You have all the ingredients!</b-tag
+                          >
+                          <b-tag
+                            class="is-danger m-1"
+                            v-else
+                            v-for="(ingredient, i) in recipe.missedIngredients"
+                            :key="i"
+                            >{{
+                              ingredient.name.charAt(0).toUpperCase() +
+                              ingredient.name.slice(1)
+                            }}</b-tag
+                          >
+                        </span>
+                      </div>
+                    </div>
+                  </b-message>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="tasks">
-        <b-table :data="data">
-         <!-- Comment <b-table-column field="title" label="Recipe" v-slot="props">
-            {{ props.row.title }}
-          </b-table-column>
-          <b-table-column
-            field="ingredients"
-            label="Missed Ingredients"
-            v-slot="props"
-          >
-            {{ props.row.missedIngredientCount }}
-          </b-table-column>-->
-
-          <b-table-column label="RECIPES TO MAKE!" v-slot="props">{{ props.row.title }}</b-table-column>
-          <b-table-column label="MISSED INGREDIENTS..." v-slot="props">{{ props.row.missedIngredientCount }}</b-table-column>
-        </b-table>
-<!--
-        <section>
-        
-          <b-image
-            v-bind:key="id"
-            src="https://spoonacular.com/recipeImages/${id}-90x90.jpg"
-            src-fallback="https://picsum.photos/id/237/600/400"
-            ratio="3by2"
-            @load="onLoad"
-            @error="onError"
-        ></b-image>
-        <pre style="max-height: 400px"><b>Events:</b>{{ events }}</pre>
-    </section> -->
       </div>
     </div>
   </div>
 </template>
 <script>
-import getCourseType from "../services/RecipeService";
-import axios from "axios";
+import RecipeService from "../services/RecipeService";
+
 export default {
   name: "app",
-  created() {
-    getCourseType.getCourseType().then(
-      axios.spread((...res) => {
-        this.recipes = res;
-        console.log("RESPONSE", res);
-      })
-    );
-  },
   mounted() {
-    fetch(
-      "https://api.spoonacular.com/recipes/findByIngredients?ingredients=(existingToDo) text: string&number=4&apiKey=e2cc2a228caa4ab59852f65e193ff042"
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        this.data = data;
-      });
+    this.getRecipes();
   },
-
   data() {
     return {
+      fridgeOpen: false,
       recipes: [],
-      newToDo: "",
-      existingToDo: [
-        { text: "Milk", id: 0 },
-        { text: "Apples", id: 1 },
-        { text: "Eggs", id: 2 },
-      ],
-      existingToDo2: [
-        { text: "Fish", id: 0 },
-        { text: "Beans", id: 1 },
-        { text: "Water", id: 2 },
-      ],
-      title: true,
-      missedIngredientCount: true,
-      id: true,
-      events: [],
+      fridgeIngredient: "",
+      freezerIngredient: "",
+      fridgeIngredients: ["Milk", "Apples", "Eggs"],
+      freezerIngredients: ["Beans"],
     };
   },
   methods: {
-    add() {
-      this.existingToDo.push({
-        text: this.newToDo,
-        id: new Date().valueOf(),
-      }),
-        (this.newToDo = "");
+    getRecipes() {
+      const loadingComponent = this.$buefy.loading.open({
+        container: this.$refs.recipes.$el,
+      });
+      RecipeService.getRecipes([
+        ...this.fridgeIngredients,
+        ...this.freezerIngredients,
+      ])
+        .then((response) => {
+          this.recipes = response.data;
+        })
+        .finally(() => {
+          loadingComponent.close();
+        });
     },
-    add2() {
-      this.existingToDo2.push({
-        text: this.newToDo2,
-        id: new Date().valueOf(),
-      }),
-        (this.newToDo2 = "");
+    addFridgeIngredient() {
+      if (this.fridgeIngredient != "") {
+        this.fridgeIngredients.push(this.fridgeIngredient);
+        this.fridgeIngredient = "";
+        this.getRecipes();
+      }
     },
-    deleteToDo(i) {
-      this.existingToDo.splice(i, 1);
+    addFreezerIngredient() {
+      if (this.freezerIngredient != "") {
+        this.freezerIngredients.push(this.freezerIngredient);
+        this.freezerIngredient = "";
+        this.getRecipes();
+      }
     },
-    deleteToDo2(i) {
-      this.existingToDo2.splice(i, 1);
+    deleteFridgeIngredient(i) {
+      this.fridgeIngredients.splice(i, 1);
+      this.getRecipes();
     },
-    onLoad(event, src) {
-      this.events.push(`${src} loaded`);
-    },
-    onError(event, src) {
-      this.events.push(`${src} fails to load`);
+    deleteFreezerIngredient(i) {
+      this.freezerIngredients.splice(i, 1);
+      this.getRecipes();
     },
   },
 };
 </script>
 
 <style>
-.chip {
-  font-size: 12px;
-  border-radius: 50px;
-  background: rgba(121, 87, 213, 0.25);
-  padding: 5px;
-  float: left;
-  color: #552fbc;
+.tag {
+  border-radius: 12px !important;
 }
-
-input {
-  display: none;
+.closed-fridge {
+  background-color: rgb(75, 28, 75) !important;
 }
-.ani {
-  width: 250px;
-  height: 400px;
-  padding: 5px;
-  display: block;
-
-  margin: auto;
-
+.fridge-handle:hover {
+  cursor: pointer;
+}
+.fridge-door:hover {
+  cursor: pointer;
+}
+.fridge-door {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 15px;
+  height: 450px;
+  background-color: white;
+  border-right: 1px solid black;
+}
+.fridge-handle {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  width: 30px;
+  height: 65px;
+  background-color: white;
+  border: 1px solid black;
+}
+.fridge-top {
+  position: relative;
+  max-height: 450px;
+  height: 450px;
+  overflow: auto;
+  width: 600px;
+  padding: 15px;
   text-align: center;
-
-  border-radius: 2%;
-  background: white;
-  border: 2px solid rgba(124, 63, 209, 1);
-}
-
-.ani2 {
-  width: 250px;
-  height: 150px;
-  padding: 5px;
-
-  display: block;
-
-  margin: auto;
-
-  text-align: center;
-
   border-radius: 5%;
   background: white;
   border: 2px solid rgba(124, 63, 209, 1);
 }
-.ani5 {
-  width: 400px;
-  height: 400px;
-  padding: 5px;
-
-  display: block;
-
-  margin: auto;
-
+.fridge-bottom {
+  width: 600px;
+  padding: 15px;
   text-align: center;
-
-  border-radius: 1%;
+  border-radius: 5%;
   background: white;
   border: 2px solid rgba(124, 63, 209, 1);
-  float:right;
-}
-.add-button2 {
-  width: 100%;
 }
 .background {
   background: rgb(228 218 255 / 25%);
 }
-ul .button.is-primary {
-  background-color: rgba(121, 87, 213, 0.25);
-
-  color: #fff;
-  float: right;
-  border-radius: 28px;
-  font-size: 10px;
+.recipe-text {
+  font-size: 1.5em;
 }
-
-input.input {
-  border: white;
-  border-bottom: 1px solid rgba(121, 87, 213, 0.8);
-  width: 125px;
-  text-align: center;
-  border-radius: 20px;
-  margin: auto;
-  float: left;
-  height: 37px;
-  font-size: 12px;
+.recipe-box {
+  display: flex;
+  flex-direction: row;
 }
-button.button.add-button2.is-primary {
-  font-size: 12px;
-  float: left;
-  width: 47px;
-  height: 37px;
-  border-radius: 20px;
+.recipe-description {
+  display: flex;
+  flex-direction: column;
 }
-button.button.add-button.is-primary {
-  font-size: 12px;
-  float: left;
-  width: 47px;
-  height: 37px;
-  border-radius: 20px;
+.recipe-image img {
+  width: 150px !important;
+  height: 150px !important;
+  border-radius: 24px;
 }
-
-.b-table .table {
-    
-    background-color: transparent;
-    text-align: center;
-    width:200px;
-
+.recipe-title {
+  font-size: 1.2rem;
 }
-tr {
-   
-    color: #7957d5;
-    font-weight: 350;
-}
-
-
 </style>
-

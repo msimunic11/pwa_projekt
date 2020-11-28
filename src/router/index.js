@@ -5,7 +5,6 @@ import Pocetna from '../components/Pocetna.vue'
 import vjezba from '../components/vjezba.vue'
 import Namirnice from '../components/Namirnice.vue'
 
-
 Vue.use(VueRouter)
 
 const routes = [
@@ -23,11 +22,11 @@ const routes = [
     path: '/vjezba',
     name: 'vjezba',
     component: vjezba
-  },
-
+  }
 ]
 
 const router = new VueRouter({
+  mode: "history",
   routes
 })
 
