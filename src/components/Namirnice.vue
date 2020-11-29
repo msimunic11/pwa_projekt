@@ -28,7 +28,7 @@
                     <b-input
                       placeholder="Add into the fridge:"
                       v-model="fridgeIngredient"
-                      icon-right="plus-box-outline"
+                      icon-right="plus-circle"
                       icon-right-clickable
                       @icon-right-click="addFridgeIngredient"
                     >
@@ -64,6 +64,7 @@
                     <b-input
                       placeholder="Add into the freezer:"
                       v-model="freezerIngredient"
+                      icon="magnify"
                       icon-right="plus-circle"
                       icon-right-clickable
                       @icon-right-click="addFreezerIngredient"
@@ -81,7 +82,7 @@
         <div class="column is-full">
           <div class="columns is-multiline has-text-centered">
             <div class="column is-full">
-              <span class="recipe-text">List of found recipes:</span>
+              <span class="recipe-text">RECIPES TO MAKE:</span>
             </div>
             <div class="column is-full" ref="recipes">
               <span v-if="recipes && recipes.length == 0"
@@ -283,6 +284,8 @@ export default {
 }
 .recipe-text {
   font-size: 1.5em;
+  color:rgba(124, 63, 209, 1);
+  font-weight: 700;
 }
 .recipe-box {
   display: flex;
@@ -300,7 +303,5 @@ export default {
 .recipe-title {
   font-size: 1.2rem;
 }
-span.icon.is-right.is-clickable {
-  background-color: rgba(124, 63, 209, 1);
-}
+
 </style>
