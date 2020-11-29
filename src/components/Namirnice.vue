@@ -7,7 +7,7 @@
             <div class="fridge-top" v-if="fridgeOpen">
               <div @click="fridgeOpen = !fridgeOpen" class="fridge-door" />
               <div class="columns is-multiline pl-3">
-                <div class="column is-full">Fridge</div>
+                
                 <div
                   class="column is-full py-1"
                   v-for="(ingredient, i) in fridgeIngredients"
@@ -27,10 +27,10 @@
                 <div class="column is-full">
                   <b-field>
                     <b-input
-                      placeholder="Ingredient name"
+                      placeholder="Add into the fridge:"
                       v-model="fridgeIngredient"
-                      icon="magnify"
-                      icon-right="plus-circle"
+                      
+                      icon-right="plus"
                       icon-right-clickable
                       @icon-right-click="addFridgeIngredient"
                     >
@@ -42,9 +42,10 @@
             <div class="fridge-top closed-fridge" v-else>
               <div @click="fridgeOpen = !fridgeOpen" class="fridge-handle" />
             </div>
-            <div class="fridge-bottom mt-3">
-              <div class="columns is-multiline">
-                <div class="column is-full">Freezer</div>
+            <div class="fridge-bottom mt-3" v-if="fridgeOpen2">
+              <div @click="fridgeOpen2 = !fridgeOpen2" class="fridge-door2" />
+              <div class="columns is-multiline pl-3" >
+                
                 <div
                   class="column is-full py-1"
                   v-for="(ingredient, i) in freezerIngredients"
@@ -64,9 +65,9 @@
                 <div class="column is-full">
                   <b-field>
                     <b-input
-                      placeholder="Ingredient name"
+                      placeholder="Add into the freezer:"
                       v-model="freezerIngredient"
-                      icon="magnify"
+                      
                       icon-right="plus-circle"
                       icon-right-clickable
                       @icon-right-click="addFreezerIngredient"
@@ -75,6 +76,9 @@
                   </b-field>
                 </div>
               </div>
+            </div>
+            <div class="fridge-bottom closed-fridge" v-else>
+              <div @click="fridgeOpen2 = !fridgeOpen2" class="fridge-handle2" />
             </div>
           </div>
         </div>
@@ -152,6 +156,7 @@ export default {
   data() {
     return {
       fridgeOpen: false,
+      fridgeOpen2: false,
       recipes: [],
       fridgeIngredient: "",
       freezerIngredient: "",
@@ -206,12 +211,18 @@ export default {
   border-radius: 12px !important;
 }
 .closed-fridge {
-  background-color: rgb(75, 28, 75) !important;
+  background-color: #7c3fd1 !important;
 }
 .fridge-handle:hover {
   cursor: pointer;
 }
 .fridge-door:hover {
+  cursor: pointer;
+}
+.fridge-handle2:hover {
+  cursor: pointer;
+}
+.fridge-door2:hover {
   cursor: pointer;
 }
 .fridge-door {
@@ -221,36 +232,57 @@ export default {
   width: 15px;
   height: 450px;
   background-color: white;
-  border-right: 1px solid black;
+  border-right: 1px solid rgba(124, 63, 209, 1);
+}
+.fridge-door2 {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 15px;
+    height: 150px;
+    background-color: white;
+    border-right: 1px solid rgba(124, 63, 209, 1);
 }
 .fridge-handle {
   position: absolute;
   bottom: 25px;
-  right: 25px;
-  width: 30px;
+  right: 20px;
+  width: 15px;
   height: 65px;
   background-color: white;
-  border: 1px solid black;
+  
+}
+.fridge-handle2 {
+  position: absolute;
+  bottom: 55px;
+  right: 20px;
+  width: 15px;
+  height: 65px;
+  background-color: white;
+  
 }
 .fridge-top {
   position: relative;
-  max-height: 450px;
-  height: 450px;
+  max-height: 400px;
+  height: 400px;
   overflow: auto;
-  width: 600px;
+  width: 250px;
   padding: 15px;
   text-align: center;
-  border-radius: 5%;
+  border-radius: 2%;
   background: white;
   border: 2px solid rgba(124, 63, 209, 1);
 }
 .fridge-bottom {
-  width: 600px;
-  padding: 15px;
-  text-align: center;
-  border-radius: 5%;
-  background: white;
-  border: 2px solid rgba(124, 63, 209, 1);
+    width: 250px;
+    position: relative;
+    height: 150px;
+    padding: 15px;
+    text-align: center;
+    border-radius: 2%;
+    background: white;
+    border: 2px solid rgba(124, 63, 209, 1);
+    margin-top: 2px;
 }
 .background {
   background: rgb(228 218 255 / 25%);

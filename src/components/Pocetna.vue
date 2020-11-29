@@ -30,36 +30,38 @@
 </template>
 
 <style>
-.fridge-top-home {
-  width: 350px;
-  padding: 15px;
-  text-align: center;
-  border-radius: 5%;
-  background: white;
-  border: 2px solid rgba(124, 63, 209, 1);
+
+  .fridge-top-home {
+    width: 250px;
+    height: 400px;
+    padding: 15px;
+    text-align: center;
+    border-radius: 2%;
+    background: rgba(124,63,209,1);
+    border: 2px solid #7c3fd1;
 }
 .fridge-bottom-home {
-  width: 350px;
-  padding: 15px;
-  text-align: center;
-  border-radius: 5%;
-  background: white;
-  border: 2px solid rgba(124, 63, 209, 1);
+    width: 250px;
+    height: 150px;
+    padding: 15px;
+    text-align: center;
+    border-radius: 2%;
+    background: rgba(124,63,209,1);
+    margin-top: 3px;
 }
+
 .catch {
-  background-color: white;
-  width: 50px;
-  height: 10px;
-  margin-top: 350px;
-  margin-left: 15px;
-  border-radius: 5px;
+    background-color: white;
+    width: 15px;
+    height: 65px;
+    margin-top: 287px;
+    margin-right: 5px;
 }
 .catch2 {
-  background-color: white;
-  width: 50px;
-  height: 10px;
-  margin-top: 40px;
-  margin-left: 15px;
-  border-radius: 5px;
+    background-color: white;
+    width: 15px;
+    height: 65px;
+    margin-top: 5px;
+    margin-right: 6px;
 }
 </style>
