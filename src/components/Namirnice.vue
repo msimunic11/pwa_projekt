@@ -7,7 +7,6 @@
             <div class="fridge-top" v-if="fridgeOpen">
               <div @click="fridgeOpen = !fridgeOpen" class="fridge-door" />
               <div class="columns is-multiline pl-3">
-                
                 <div
                   class="column is-full py-1"
                   v-for="(ingredient, i) in fridgeIngredients"
@@ -29,8 +28,7 @@
                     <b-input
                       placeholder="Add into the fridge:"
                       v-model="fridgeIngredient"
-                      
-                      icon-right="plus"
+                      icon-right="plus-box-outline"
                       icon-right-clickable
                       @icon-right-click="addFridgeIngredient"
                     >
@@ -44,8 +42,7 @@
             </div>
             <div class="fridge-bottom mt-3" v-if="fridgeOpen2">
               <div @click="fridgeOpen2 = !fridgeOpen2" class="fridge-door2" />
-              <div class="columns is-multiline pl-3" >
-                
+              <div class="columns is-multiline pl-3">
                 <div
                   class="column is-full py-1"
                   v-for="(ingredient, i) in freezerIngredients"
@@ -67,7 +64,6 @@
                     <b-input
                       placeholder="Add into the freezer:"
                       v-model="freezerIngredient"
-                      
                       icon-right="plus-circle"
                       icon-right-clickable
                       @icon-right-click="addFreezerIngredient"
@@ -235,13 +231,13 @@ export default {
   border-right: 1px solid rgba(124, 63, 209, 1);
 }
 .fridge-door2 {
-    position: absolute;
-    left: 0px;
-    bottom: 0px;
-    width: 15px;
-    height: 150px;
-    background-color: white;
-    border-right: 1px solid rgba(124, 63, 209, 1);
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 15px;
+  height: 150px;
+  background-color: white;
+  border-right: 1px solid rgba(124, 63, 209, 1);
 }
 .fridge-handle {
   position: absolute;
@@ -250,7 +246,6 @@ export default {
   width: 15px;
   height: 65px;
   background-color: white;
-  
 }
 .fridge-handle2 {
   position: absolute;
@@ -259,7 +254,6 @@ export default {
   width: 15px;
   height: 65px;
   background-color: white;
-  
 }
 .fridge-top {
   position: relative;
@@ -274,15 +268,15 @@ export default {
   border: 2px solid rgba(124, 63, 209, 1);
 }
 .fridge-bottom {
-    width: 250px;
-    position: relative;
-    height: 150px;
-    padding: 15px;
-    text-align: center;
-    border-radius: 2%;
-    background: white;
-    border: 2px solid rgba(124, 63, 209, 1);
-    margin-top: 2px;
+  width: 250px;
+  position: relative;
+  height: 150px;
+  padding: 15px;
+  text-align: center;
+  border-radius: 2%;
+  background: white;
+  border: 2px solid rgba(124, 63, 209, 1);
+  margin-top: 2px;
 }
 .background {
   background: rgb(228 218 255 / 25%);
@@ -305,5 +299,8 @@ export default {
 }
 .recipe-title {
   font-size: 1.2rem;
+}
+span.icon.is-right.is-clickable {
+  background-color: rgba(124, 63, 209, 1);
 }
 </style>
