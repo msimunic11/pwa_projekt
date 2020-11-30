@@ -52,16 +52,19 @@
 
 .catch {
     background-color: white;
-    width: 15px;
-    height: 65px;
-    margin-top: 287px;
+    width: 20px;
+    height: 135px;
     margin-right: 5px;
+    border-radius: 10px;
+    border-right: 2px solid rgb(189 165 255 / 90%);
 }
 .catch2 {
     background-color: white;
-    width: 15px;
-    height: 65px;
+    width: 20px;
+    height: 50px;
     margin-top: 5px;
     margin-right: 6px;
+    border-radius: 10px;
+    border-right: 2px solid #bea8f7;
 }
 </style>

@@ -5,7 +5,12 @@
         <div class="column is-full">
           <div>
             <div class="fridge-top" v-if="fridgeOpen">
-              <div @click="fridgeOpen = !fridgeOpen" class="fridge-door" />
+              <div @click="fridgeOpen = !fridgeOpen" class="fridge-door" >
+                <span>
+     
+      x
+    </span>
+              </div>
               <div class="columns is-multiline pl-3">
                 <div
                   class="column is-full py-1"
@@ -41,7 +46,14 @@
               <div @click="fridgeOpen = !fridgeOpen" class="fridge-handle" />
             </div>
             <div class="fridge-bottom mt-3" v-if="fridgeOpen2">
-              <div @click="fridgeOpen2 = !fridgeOpen2" class="fridge-door2" />
+             
+              <div @click="fridgeOpen2 = !fridgeOpen2" class="fridge-door2">
+                 <span>
+     
+      x
+    </span>
+   
+     </div>
               <div class="columns is-multiline pl-3">
                 <div
                   class="column is-full py-1"
@@ -152,6 +164,7 @@ export default {
   },
   data() {
     return {
+      hover: false,
       fridgeOpen: false,
       fridgeOpen2: false,
       recipes: [],
@@ -227,7 +240,7 @@ export default {
   left: 0px;
   bottom: 0px;
   width: 15px;
-  height: 450px;
+  height: 400px;
   background-color: white;
   border-right: 1px solid rgba(124, 63, 209, 1);
 }
@@ -236,25 +249,28 @@ export default {
   left: 0px;
   bottom: 0px;
   width: 15px;
-  height: 150px;
+  height: 145px;
   background-color: white;
   border-right: 1px solid rgba(124, 63, 209, 1);
 }
 .fridge-handle {
-  position: absolute;
-  bottom: 25px;
-  right: 20px;
-  width: 15px;
-  height: 65px;
-  background-color: white;
+    position: absolute;
+    right: 20px;
+    width: 20px;
+    height: 135px;
+    background-color: white;
+    border-radius: 10px;
+    border-right: 2px solid rgb(148 119 228 / 90%);
 }
 .fridge-handle2 {
-  position: absolute;
-  bottom: 55px;
-  right: 20px;
-  width: 15px;
-  height: 65px;
-  background-color: white;
+    position: absolute;
+    bottom: 80px;
+    right: 20px;
+    width: 20px;
+    height: 50px;
+    background-color: white;
+    border-radius: 10px;
+    border-right: 2px solid rgb(148 119 228 / 90%);
 }
 .fridge-top {
   position: relative;
@@ -284,7 +300,7 @@ export default {
 }
 .recipe-text {
   font-size: 1.5em;
-  color:rgba(124, 63, 209, 1);
+  color: rgba(124, 63, 209, 1);
   font-weight: 700;
 }
 .recipe-box {
@@ -303,5 +319,4 @@ export default {
 .recipe-title {
   font-size: 1.2rem;
 }
-
 </style>
