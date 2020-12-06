@@ -5,11 +5,8 @@
         <div class="column is-full">
           <div>
             <div class="fridge-top" v-if="fridgeOpen">
-              <div @click="fridgeOpen = !fridgeOpen" class="fridge-door" >
-                <span>
-     
-      x
-    </span>
+              <div @click="fridgeOpen = !fridgeOpen" class="fridge-door">
+                <span> x </span>
               </div>
               <div class="columns is-multiline pl-3">
                 <div
@@ -42,18 +39,14 @@
                 </div>
               </div>
             </div>
+
             <div class="fridge-top closed-fridge" v-else>
               <div @click="fridgeOpen = !fridgeOpen" class="fridge-handle" />
             </div>
-            <div class="fridge-bottom mt-3" v-if="fridgeOpen2">
-             
+            <div class="fridge-bottom" v-if="fridgeOpen2">
               <div @click="fridgeOpen2 = !fridgeOpen2" class="fridge-door2">
-                 <span>
-     
-      x
-    </span>
-   
-     </div>
+                <span> x </span>
+              </div>
               <div class="columns is-multiline pl-3">
                 <div
                   class="column is-full py-1"
@@ -164,7 +157,6 @@ export default {
   },
   data() {
     return {
-      hover: false,
       fridgeOpen: false,
       fridgeOpen2: false,
       recipes: [],
@@ -212,6 +204,12 @@ export default {
       this.freezerIngredients.splice(i, 1);
       this.getRecipes();
     },
+    mouseEnter: function () {
+      this.toShowOnHover = !this.toShowOnHover;
+    },
+    mouseLeave: function () {
+      this.toShowOnHover = false;
+    },
   },
 };
 </script>
@@ -254,23 +252,23 @@ export default {
   border-right: 1px solid rgba(124, 63, 209, 1);
 }
 .fridge-handle {
-    position: absolute;
-    right: 20px;
-    width: 20px;
-    height: 135px;
-    background-color: white;
-    border-radius: 10px;
-    border-right: 2px solid rgb(148 119 228 / 90%);
+  position: absolute;
+  right: 20px;
+  width: 20px;
+  height: 135px;
+  background-color: white;
+  border-radius: 10px;
+  border-right: 2px solid rgb(148 119 228 / 90%);
 }
 .fridge-handle2 {
-    position: absolute;
-    bottom: 80px;
-    right: 20px;
-    width: 20px;
-    height: 50px;
-    background-color: white;
-    border-radius: 10px;
-    border-right: 2px solid rgb(148 119 228 / 90%);
+  position: absolute;
+  bottom: 80px;
+  right: 20px;
+  width: 20px;
+  height: 50px;
+  background-color: white;
+  border-radius: 10px;
+  border-right: 2px solid rgb(148 119 228 / 90%);
 }
 .fridge-top {
   position: relative;
