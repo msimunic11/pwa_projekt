@@ -1,7 +1,6 @@
 <template>
   <div class="container py-6">
     <div class="left">
-      <hr />
       <h1>Welcome to</h1>
       <h1>
         <b>What's in my fridge?</b>
