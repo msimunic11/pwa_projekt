@@ -338,9 +338,11 @@ some-component {
   border-radius: 10px;
   margin-top: 100px;
   padding: 10px;
-  float: right;
   color: white;
   width: 115px;
+  position: fixed;
+  margin-bottom: 110px;
+  top: 50px;
 }
 some-component2 {
   background-color: #7957d5;
@@ -349,5 +351,15 @@ some-component2 {
   color: white;
   width: 120px;
   float: left;
+  margin-left: 10px;
+  margin-top: 34px;
+}
+.fridge-door span {
+  color: #7957d5;
+  font-weight: bold;
+}
+.fridge-door2 span {
+  color: #7957d5;
+  font-weight: bold;
 }
 </style>
