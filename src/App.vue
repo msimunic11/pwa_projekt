@@ -42,7 +42,7 @@ export default {
   width: 37%;
 }
 .left h1 {
-  font-size: 30px;
+  font-size: 45px;
   font-family: Indie flower;
 }
 .fridge-list {

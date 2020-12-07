@@ -2,8 +2,9 @@
   <div class="container py-6">
     <div class="left">
       <hr />
+      <h1>Welcome to</h1>
       <h1>
-        Welcome to <b><i>What's in my fridge?</i></b>
+        <b>What's in my fridge?</b>
       </h1>
       <p>
         The best way to reduce food waste and save money? Check what you already
