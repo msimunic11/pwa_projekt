@@ -79,7 +79,7 @@ a.navbar-item {
 @font-face {
   font-family: "Indie Flower";
   src: local("Indie_Flower"),
-   url(./fonts/Indie_Flower/IndieFlower-Regular.ttf) format("truetype");
+    url(./fonts/Indie_Flower/IndieFlower-Regular.ttf) format("truetype");
 }
 @media only screen and (max-width: 800px) {
   .left,

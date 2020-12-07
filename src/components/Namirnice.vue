@@ -107,7 +107,7 @@
               <span v-if="recipes && recipes.length == 0"
                 >Not a single recipe was found!</span
               >
-              <div class="columns px-6 is-multiline" v-else>
+              <div class="columns px-1 is-multiline" v-else>
                 <div
                   class="column is-one-third-desktop is-full-tablet"
                   v-for="(recipe, i) in recipes"

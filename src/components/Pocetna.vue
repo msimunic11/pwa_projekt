@@ -31,41 +31,40 @@
 </template>
 
 <style>
-
-  .fridge-top-home {
-    width: 250px;
-    height: 400px;
-    padding: 15px;
-    text-align: center;
-    border-radius: 2%;
-    background: rgba(124,63,209,1);
-    border: 2px solid #7c3fd1;
+.fridge-top-home {
+  width: 250px;
+  height: 400px;
+  padding: 15px;
+  text-align: center;
+  border-radius: 2%;
+  background: rgba(124, 63, 209, 1);
+  border: 2px solid #7c3fd1;
 }
 .fridge-bottom-home {
-    width: 250px;
-    height: 150px;
-    padding: 15px;
-    text-align: center;
-    border-radius: 2%;
-    background: rgba(124,63,209,1);
-    margin-top: 3px;
+  width: 250px;
+  height: 150px;
+  padding: 15px;
+  text-align: center;
+  border-radius: 2%;
+  background: rgba(124, 63, 209, 1);
+  margin-top: 3px;
 }
 
 .catch {
-    background-color: white;
-    width: 20px;
-    height: 135px;
-    margin-right: 5px;
-    border-radius: 10px;
-    border-right: 2px solid rgb(189 165 255 / 90%);
+  background-color: white;
+  width: 20px;
+  height: 135px;
+  margin-right: 5px;
+  border-radius: 10px;
+  border-right: 2px solid rgb(189 165 255 / 90%);
 }
 .catch2 {
-    background-color: white;
-    width: 20px;
-    height: 50px;
-    margin-top: 5px;
-    margin-right: 6px;
-    border-radius: 10px;
-    border-right: 2px solid #bea8f7;
+  background-color: white;
+  width: 20px;
+  height: 50px;
+  margin-top: 5px;
+  margin-right: 6px;
+  border-radius: 10px;
+  border-right: 2px solid #bea8f7;
 }
 </style>
