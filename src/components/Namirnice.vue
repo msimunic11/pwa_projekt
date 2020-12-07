@@ -41,7 +41,12 @@
             </div>
 
             <div class="fridge-top closed-fridge" v-else>
-              <div @mouseover="upHere = true" @mouseleave="upHere = false" @click="fridgeOpen = !fridgeOpen" class="fridge-handle" >
+              <div
+                @mouseover="upHere = true"
+                @mouseleave="upHere = false"
+                @click="fridgeOpen = !fridgeOpen"
+                class="fridge-handle"
+              >
                 <some-component v-show="upHere">Open fridge</some-component>
               </div>
             </div>
@@ -82,7 +87,12 @@
               </div>
             </div>
             <div class="fridge-bottom closed-fridge" v-else>
-              <div @mouseover="upHere2 = true" @mouseleave="upHere2 = false" @click="fridgeOpen2 = !fridgeOpen2" class="fridge-handle2" >
+              <div
+                @mouseover="upHere2 = true"
+                @mouseleave="upHere2 = false"
+                @click="fridgeOpen2 = !fridgeOpen2"
+                class="fridge-handle2"
+              >
                 <some-component2 v-show="upHere2">Open freezer</some-component2>
               </div>
             </div>
@@ -161,8 +171,8 @@ export default {
   },
   data() {
     return {
-      upHere : false,
-      upHere2 : false,
+      upHere: false,
+      upHere2: false,
       fridgeOpen: false,
       fridgeOpen2: false,
       recipes: [],
@@ -323,22 +333,21 @@ export default {
 .recipe-title {
   font-size: 1.2rem;
 }
-some-component{
-    background-color: #7957d5;
-    border-radius: 10px;
-    margin-top: 100px;
-    padding: 10px;
-    float: right;
-    color: white;
-    width: 115px;
-}
-some-component2{
+some-component {
   background-color: #7957d5;
-    border-radius: 10px;
-    padding: 10px;
-    color: white;
-    width: 120px;
-    float: left;
-
+  border-radius: 10px;
+  margin-top: 100px;
+  padding: 10px;
+  float: right;
+  color: white;
+  width: 115px;
+}
+some-component2 {
+  background-color: #7957d5;
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+  width: 120px;
+  float: left;
 }
 </style>
