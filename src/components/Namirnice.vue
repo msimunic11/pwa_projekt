@@ -316,6 +316,7 @@ export default {
   font-size: 1.5em;
   color: rgba(124, 63, 209, 1);
   font-weight: 700;
+  font-family: Indie Flower;
 }
 .recipe-box {
   display: flex;

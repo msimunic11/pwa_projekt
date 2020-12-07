@@ -76,6 +76,11 @@ a.navbar-item {
   text-transform: uppercase;
   padding: 5rem 0rem !important;
 }
+@font-face {
+  font-family: "Indie Flower";
+  src: local("Indie_Flower"),
+   url(./fonts/Indie_Flower/IndieFlower-Regular.ttf) format("truetype");
+}
 @media only screen and (max-width: 800px) {
   .left,
   .right {
