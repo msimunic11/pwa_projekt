@@ -309,11 +309,8 @@ export default {
   border: 2px solid rgba(124, 63, 209, 1);
   margin-top: 2px;
 }
-.background {
-  background: rgb(228 218 255 / 25%);
-}
 .recipe-text {
-  font-size: 1.5em;
+  font-size: 2.5em;
   color: rgba(124, 63, 209, 1);
   font-weight: 700;
   font-family: Indie Flower;
